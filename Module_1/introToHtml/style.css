@@ -1,4 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
 
 body {
-    background-color: paleturquoise;
+    background-color: #7286D3;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1, h2 {
+    font-family: "Josefin Sans", Arial, Helvetica, sans-serif;
+    color: #fff;
+}
+
+#first-p {
+    color: #FF78F0;
+}
+
+.large-fonts {
+    color: #B08BBB;
+}
+
+p {
+    font-size: 18px;
+    font-weight:  medium;
+    color: #fff !important;
+}
+
+
+
+
+.section-1 {
+    padding: 10px;
+}
+
+.section-2 {
+    padding: 10px;
 }
