@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 0;
+    font-family: Helvetica, sans-serif;
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 50px 1fr 30px;
+    gap: 5px 10px;
+    height: 100vh;
+
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    /* controls main axis  */
+    justify-content: flex-start;
+    /* controls main cross-axis  */
+    align-items: center;
+
+
+    height: 50px;
+    background-color: #a2cbb6;
+}
+
+div {
+    font-size: 20px;
+    margin: 10px;
+    color: #f3dba8;
+}
+
+nav > div:last-child {
+    margin-left: auto;
+}
+
+aside {
+    background-color: #a2b4da;
+  }
+  
+  main {
+    background-color: #f3dba8;
+  }
+  
+  footer {
+    background-color: #a2cbb6;
+  }
+
+  .flex-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  nav, footer {
+    grid-column: 1 / 3;
+  }
+
+
+/* .one {
+    background-color: #645CBB;
+    flex: 1;
+}
+
+.two {
+    background-color: #A084DC;
+    flex: 1;
+}
+
+.three{
+    background-color: #BFACE2;
+    font-size: 16px;
+    order: 99;
+}
+
+.four {
+    background-color: #EBC7E6;
+    flex: 4;
+}
+.five {
+    background-color: #00425A;
+}
+.six {
+    background-color: #5B8FB9;
+    font-size: 64px;
+}
+.seven {
+    background-color: #84D2C5;
+}
+.eight {
+    background-color: #FF8B13;
+    order: 2;
+}
+.nine {
+    background-color: #1F8A70;
+    order: 1;
+}
+.ten {
+    background-color: #F55050;
+}
+
+section > div {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    font-size: 32px;
+}
+
+section {
+    display: flex;
+    background-color: dodgerblue;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    height: 200px;
+    gap: 5%;
+} */
