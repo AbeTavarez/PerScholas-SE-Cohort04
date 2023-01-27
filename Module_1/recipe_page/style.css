@@ -1,0 +1,42 @@
+/* box sizing allow our elements to stay with the same size even if we add padding or border */
+
+/* you can all box-sizing to everything on the page  */
+* {
+   /* box-sizing: border-box; */
+}
+
+.div1 {
+    width: 300px;
+    border: solid 2px red;
+    margin-bottom: 10px;
+    padding: 20px;
+}
+
+.div2 {
+    /* you can also add box-sizing to a specific element  */
+    box-sizing: border-box; 
+    width: 300px;
+    border: solid 2px green;
+    padding: 20px;
+}
+
+/* CSS for the recipe section  */
+body {
+    background-color: #645CBB;
+}
+main {
+    border:  solid 3px #A084DC;
+    box-shadow: 3px 3px #BFACE2;
+    max-width: 1500px;
+    padding: 25px;
+    margin: auto;
+    color: #fff;
+}
+
+h1, h2 {
+    color: #EBC7E6;
+}
+
+header {
+    text-align: center;
+}
