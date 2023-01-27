@@ -1,0 +1,84 @@
+/* Tilting cards  */
+.cards-1 div {
+    background-color: rebeccapurple;
+    height: 200px;
+  }
+  .cards-1 img {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .cards-1 img:hover {
+    rotate: 10deg;
+    transition: all 0.5s ease;
+  }
+  
+  .cards-1 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  hr {
+    margin: 100px 0;
+  }
+  
+  /* Scaling cards  */
+  .cards-2 div {
+    height: 200px;
+  }
+  
+  .cards-2 img {
+    width: 300px;
+    height: 200px;
+  }
+  
+  .cards-2 img:hover {
+    scale: 1.2;
+    transition: all 0.5s ease-in-out;
+}
+.cards-2 img {
+    scale: 1;
+    transition: all 0.5s ease-in-out;
+    /* transition: all 0.5s ease-out; */
+  }
+  
+  .cards-2 {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  /* paragraph animation  */
+  p {
+    padding: 10px;
+    animation-name: demo-anime;
+    animation-duration: 3s;
+  }
+  
+  @keyframes demo-anime {
+    0% {
+      background-color: red;
+    }
+    25% {
+      background-color: blue;
+      font-size: 22px;
+    }
+    50% {
+      background-color: green;
+    }
+    75% {
+      background-color: yellow;
+    }
+    100% {
+      background-color: purple;
+    }
+  }
+  
+  /* @keyframes demo-anime {
+    from {
+      background-color: red;
+    }
+    to {
+      background-color: blue;
+    }
+  } */
+  
