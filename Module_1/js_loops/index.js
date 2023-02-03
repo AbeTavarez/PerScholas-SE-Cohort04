@@ -16,3 +16,5 @@ for (let i = 0; i < 10; i++) {
     hash = hash + "#";
     console.log(i, hash);
 }
+
+
