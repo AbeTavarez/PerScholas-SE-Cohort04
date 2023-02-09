@@ -77,7 +77,7 @@ getDevFullObject("John", "Smith" ,'python', 'html', 'css')
 
 
 //
-function setColor(bike, color = "purple", size = 20){
+function setColor(bike, color = "purple", size = 20) {
     return {
         bikeType: bike,
         bikeColor: color,
@@ -86,4 +86,48 @@ function setColor(bike, color = "purple", size = 20){
 }
 
 const bikeObj = setColor("bmx", "red")
-console.log(bikeObj);
+// console.log(bikeObj);
+
+
+
+
+const colorsArr = ['red', 'green', 'blue'];
+
+colorsArr.forEach( function(color){
+    console.log(color.toUpperCase()) 
+})
+
+
+
+function foo(x) {
+    let r = x + 4;
+
+    function bar() {
+        let total = x + 10;
+        console.log(r);
+    }
+}
+
+// console.log(window);
+
+// var pollution = "thi is bad"
+// console.log(window.pollution);
+
+// function printXTimes(n) {
+//     // the base case
+//     if (n < 0) return;
+//     // the action
+//     console.log(`${n} more prints to go`);
+//     // the recursive call
+//     printXTimes(n - 1);
+// }
+
+// printXTimes(3)
+
+function factorial(n){
+    if (n <= 0) return 1;
+    console.log(`Will return ${n} * factorial(${n - 1})`)
+    return n * factorial(n-1);
+}
+
+factorial(4)
