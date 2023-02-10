@@ -19,7 +19,7 @@ function rollDice() {
     return Math.floor(Math.random() * 6) + 1;
 }
 
-while(playerScore < 5 && computerScore < 5) {
+while (playerScore < 5 && computerScore < 5) {
     const playerRoll = rollDice();
     const computerRoll = rollDice();
 
