@@ -1,6 +1,6 @@
 // Example of What your JS File in VS Code should look like
 
-
+console.log('hello from index.js');
 /*
 	Remember!!! Once you’ve completed a problem,
 	COMMENT OUT YOUR WORK before moving on to the next one.
@@ -11,10 +11,8 @@
 
 // I. Variables & Data Types
 // A. Q + A
-// 1. Using a = operator
-// 2. We reference the variable 
-
 // B. Strings
+let firstVariable = "Hello World";
 // C. Booleans
 // D. The Farm
 // E. Driver's Ed
