@@ -1,0 +1,23 @@
+
+h2 {
+    background-color: royalblue;
+    padding: 5px;
+}
+
+div {
+    background-color: purple;
+    padding: 10px;
+    color: #fff
+}
+
+.selected {
+    background-color: green;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+.removed {
+    background-color: red;
+    font-family: monospace;
+    font-size: 18px;
+}

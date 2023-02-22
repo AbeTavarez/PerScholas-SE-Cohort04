@@ -62,4 +62,4 @@ console.log(div);
 const p = document.createElement("p");
 p.textContent = "Hello world"
 
-console.log(p);
+console.dir(p);
