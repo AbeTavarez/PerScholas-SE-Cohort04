@@ -47,7 +47,7 @@ class AlienShip extends Ship {
 
 
 
-//?? +++++ GAME LOGIC +++++
+//?? +++++ TEST GAME LOGIC +++++
 // Test instance of the SHip class
 const ship = new Ship(5, 5, 1);
 // console.log(ship);
@@ -66,3 +66,21 @@ ussAssembly.attack(alienShip);
 
 console.log(ussAssembly);
 console.log(alienShip);
+
+// TODO: Make a game object
+
+// Make a method in the game object that will run a 'check win' for the health of the alien(s) and/or the USS Assembly. If the hull is 0 or less, display a message that the ship went kabloo-ey.
+
+// Make it so the alien will only be hit if a Math.random call is below the accuracy threshold.
+
+// Make a method for the alien ship to attack a target.
+
+// At a status console log for the end of the round.
+
+// PROBLEM: If you make the alien ship go kabloo-ey, then the alien should not then be able to attack you. Fix this.
+
+// Make it so the attacks will keep occuring until someone's hull is at 0. Isolate what it is that you want to repeat.
+
+// Make many alien ships with a Class. Make each object slightly different . . .
+
+// hull between 3 and 6, firepower between 2 and 4, accuracy between 0.6 and 0.8.
