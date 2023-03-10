@@ -1,0 +1,15 @@
+section.cards {
+  display: flex;
+  align-items: center;
+}
+
+section.cards .card {
+  margin: 0 10px;
+}
+
+.card-img,
+.card-img-bottom,
+.card-img-top {
+  height: 300px;
+  object-fit: cover;
+}
