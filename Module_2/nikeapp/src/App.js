@@ -15,7 +15,7 @@ function App() {
 
   // 2. Wrap the components inside the Context Provider and pass the values
   return (
-    <ProductContext.Provider value={{data, cart, setCart}}>
+    <ProductContext.Provider value={{data: data, cart: cart, setCart: setCart}}>
       <div className="">
       <Header/>
       <ProductsList />

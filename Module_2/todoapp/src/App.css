@@ -1,0 +1,100 @@
+* {
+  box-sizing: border-box;
+  outline: none;
+  font-size: calc(1vw + 6px);
+}
+
+body {
+  background-color: rgba(240, 128, 128, 0.6);
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  color: rgba(45, 25, 45, 0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  min-height: 110vh;
+}
+
+#root > h1 {
+  font-size: 5vw;
+  text-align: center;
+  text-decoration: none;
+  color: white;
+}
+
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  background-color: white;
+  width: 90vw;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.425);
+  border-radius: 0.25rem;
+  padding: 1rem;
+  margin: 0 0 2rem;
+}
+
+.App > input {
+  width: 40%;
+}
+
+.todolist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  max-width: calc(90vw - 4rem);
+}
+
+.todolist > li {
+  border: 0.1px solid black;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
+  width: 100%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0 1rem;
+  margin: 0.15rem 0;
+  background-color: lightcyan;
+}
+
+.todolist > li .left {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.todolist > li > .left input[type="text"] {
+  width: 50%;
+  height: 2rem;
+}
+.todolist > li input[type="text"] {
+  margin-bottom: 1rem;
+}
+
+.todolist > li label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+h1 {
+  text-decoration: underline;
+  font-size: calc(1vw + 12px);
+}
+
+button {
+  background-color: rgb(23, 5, 58);
+  color: lightcyan;
+}
