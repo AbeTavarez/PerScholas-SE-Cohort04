@@ -1,10 +1,16 @@
-
+import { useContext } from "react";
+import { ProductContext } from "../App";
 
 function ProductListItem(props) {
-    const { product, addToCart, cart } = props;
+    const { product } = props;
+    // Consume the context
+    const productContextValue = useContext(ProductContext);
+    const {cart, setCart} = productContextValue;
+
+    // console.log(productContextValue);
 
     const handleAddToCart = () => {
-        addToCart( [...cart, product] )
+        setCart( [...cart, product] )
     }
 
     return (
