@@ -3,7 +3,7 @@ import Todo from "./Todo";
 function TodoList(props) {
   const { todos, addTodo, completeTodo, editTodoText, deleteTodo } = props;
 
-  console.log(todos);
+  // console.log(todos);
 
   return (
     <>

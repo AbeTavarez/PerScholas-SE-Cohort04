@@ -30,6 +30,7 @@ function Todo(props) {
           checked={todo.completed}
         />
       </label>
+      
       <button onClick={(e) => deleteTodo(todo.id)}>DELETE</button>
     </li>
   );
