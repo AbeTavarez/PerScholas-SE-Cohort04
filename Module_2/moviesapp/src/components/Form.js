@@ -1,9 +1,10 @@
 import { useState } from "react";
+import { Form as BForm, Button, Container } from "react-bootstrap";
 
 function Form(props) {
-  const { movieSearch } = props;
-    // formData is an object
-  const [formData, setFormData] = useState({ searchTerm: ""});
+  const { movieSearch, setMovie } = props;
+  // formData is an object
+  const [formData, setFormData] = useState({ searchTerm: "" });
 
   // handle change on the input
   const handleChange = (e) => {
@@ -11,25 +12,30 @@ function Form(props) {
   };
 
   // handle the on submit form
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    movieSearch(formData.searchTerm);
-  }
+    const data = await movieSearch(formData.searchTerm);
+    setMovie(data);
+  };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={formData.searchTerm}
-          name="searchTerm"
-          placeholder="Search"
-          onChange={handleChange}
-        />
+    <Container className="mt-3" expand="sm">
+      <BForm onSubmit={handleSubmit}  expand="sm">
+        <BForm.Group className="mb-3">
+          <BForm.Control
+            className="mb-3"
+            type="text"
+            value={formData.searchTerm}
+            name="searchTerm"
+            placeholder="Search"
+            onChange={handleChange}
+            required
+          />
 
-        <input type="submit" />
-      </form>
-    </div>
+          <Button variant="info" type="submit">Search</Button>
+        </BForm.Group>
+      </BForm>
+    </Container>
   );
 }
 export default Form;

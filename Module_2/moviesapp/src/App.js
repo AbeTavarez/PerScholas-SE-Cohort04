@@ -1,27 +1,44 @@
-import {useState} from 'react';
+import { useState, useEffect } from "react";
 
-import Form from './components/Form';
-import MovieDisplay from './components/MovieDisplay';
+import { getMovie } from "./services/omdbapi";
 
-import './App.css';
+import Form from "./components/Form";
+import MovieDisplay from "./components/MovieDisplay";
+import NavBar from "./components/NavBar";
 
+import "./App.css";
+import 'react-toastify/dist/ReactToastify.css';
+// import { ToastContainer, toast } from 'react-toastify';
+// import { Alert } from "react-bootstrap";
 
 function App() {
   // Store the data about a movie
   const [movie, setMovie] = useState(null);
 
-  // fetch data from API
-  const getMovie = async (searchTerm) => {
-    const response = await fetch(`https://www.omdbapi.com/?apikey=98e3fb1f&t=${searchTerm}`);
-    const data = await response.json();
-    setMovie(data);
-  }
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getMovie("Clueless");
+      console.log(data);
+      setMovie(data);
+    };
+    fetchData();
+  }, []);
+
+  // if (movie?.Error) {
+  //   console.log(movie.Error);
+  //   toast(movie.Error)
+  // }
 
   return (
     <div className="App">
-      <Form  movieSearch={getMovie}/>
+      <NavBar />
+      {/* <ToastContainer/> */}
+      {/* {movie?.Error && <Alert>Movie Not Found!</Alert>} */}
+      <Form movieSearch={getMovie} setMovie={setMovie} />
 
-      {movie && <MovieDisplay movie={movie}/>}
+
+      <MovieDisplay movie={movie} />
     </div>
   );
 }
