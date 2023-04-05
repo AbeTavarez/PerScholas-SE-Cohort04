@@ -1,0 +1,15 @@
+{
+  "name": "day1",
+  "version": "1.0.0",
+  "description": "this is a demo",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Abraham",
+  "license": "ISC",
+  "dependencies": {
+    "request": "^2.88.2"
+  }
+}
