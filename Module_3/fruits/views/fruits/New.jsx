@@ -1,10 +1,9 @@
 const React = require('react');
-
+const DefaultLayout = require('../layout/Default')
 
 function New() {
     return(
-        <div>
-            <h1>New Fruit Page</h1>
+        <DefaultLayout title="New Fruit Page">
 
             <form action='/fruits' method='POST'>
 
@@ -22,7 +21,7 @@ function New() {
                 <input type="submit" value="Create new fruit"/>
 
             </form>
-        </div>
+        </DefaultLayout>
     )
 }
 
