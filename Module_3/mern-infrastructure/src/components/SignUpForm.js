@@ -11,9 +11,14 @@ function SignUpForm() {
 
   const disable = formData.password !== formData.confirm;
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => { 
+    e.preventDefault();
+    console.log(formData) 
+};
 
-  const handleChange = () => {}
+  const handleChange = (evt) => {
+    setFormData({...formData, [evt.target.name]: evt.target.value, error: ''})
+  };
 
   return (
     <div>
