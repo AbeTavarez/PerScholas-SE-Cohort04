@@ -6,19 +6,6 @@ const Tweet = require("./models/Tweet");
 
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Server is up");
-});
-
-// data comes from client or react app
-// const myFirstTweet = {
-//     title: "Sage Advice 123",
-//     body: "",
-//     author: "Arthur",
-//     category: "Programming",
-//     likes: 20,
-// };
-
 const manyTweets = [
   {
     title: "Deep Thoughts",
@@ -68,29 +55,10 @@ const manyTweets = [
   },
 ];
 
-Tweet.findOneAndRemove({ title: "Deep Thoughts" })
-// if database transaction succeeds
-.then((tweet) => {
-  console.log(tweet)
-})
-// if database transaction fails
-.catch((error) => {
-  console.log(error)
-})
-
-//* Using operator to filter queries
-// Tweet.find({ likes: { $gte: 20 } })
-// // if database transaction succeeds
-// .then((tweets) => {
-//   console.log(tweets)
-// })
-// // if database transaction fails
-// .catch((error) => {
-//   console.log(error)
-// })
-
-//* search or filter by the title
-// Tweet.find({ title: "Sage Advice" })
+// Tweet.findOneAndUpdate(
+//   { title: "Vespa" },
+//   { sponsored: true },
+//   { new: true })
 // // if database transaction succeeds
 // .then((tweet) => {
 //   console.log(tweet)
@@ -100,52 +68,154 @@ Tweet.findOneAndRemove({ title: "Deep Thoughts" })
 //   console.log(error)
 // })
 
-//* query all documents and return the selected fields\
-// Tweet.find({}, "title body")
-//   // if database transaction succeeds
-//   .then((tweets) => {
-//     console.log(tweets);
-//   })
-//   // if database transaction fails
-//   .catch((error) => {
-//     console.log(error);
-//   });
+//* Query all documents and return the selected fields
+app.get("/", (req, res) => {
+  Tweet.find({}, "title body")
+    // if database transaction succeeds
+    .then((tweets) => {
+      res.send(tweets);
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
-//* find all Tweets in db
-// Tweet.find({})
-//   // if database transaction succeeds
-//   .then((tweets) => {
-//     console.log(tweets);
-//   })
-//   // if database transaction fails
-//   .catch((error) => {
-//     console.log(error);
-//   });
+app.get("/tweets/count", (req, res) => {
+  Tweet.countDocuments({ likes: { $gte: 20 } })
+    // if database transaction succeeds
+    .then((count) => {
+      res.send({count: count});
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
-// * Create many Tweets
-// Tweet.insertMany(manyTweets)
-// // if database transaction succeeds
-// .then((tweets) => {
-//   console.log(tweets)
-// })
-// // if database transaction fails
-// .catch((error) => {
-//   console.log(error)
-// })
+app.get('/tweets/sort', (req, res) => {
+  Tweet.find({ likes: { $gte: 20 } }, "body -_id")
+  .limit(3)
+  .sort("-title")
+  .exec()
+// if database transaction succeeds
+.then((tweets) => {
+  res.send(tweets)
+})
+// if database transaction fails
+.catch((error) => {
+  console.log(error)
+})
+})
 
-//* Create a single tweet
-// Tweet.create(myFirstTweet)
-// .then(tweet => {
-//     // res.send('Tweet Created')
-//     console.log(tweet);
-// })
-// .catch((error) => {
-//     console.error(error)
-// })
-// .finally(() => {
-//     console.log('This runs if the promise is completed or rejected');
-// })
+//* ==== Return all tweets with 20 or more likes
+app.get("/trending", (req, res) => {
+  //* Using operator to filter queries
+  Tweet.find({ likes: { $gte: 20 } })
+    // if database transaction succeeds
+    .then((tweets) => {
+      res.send(tweets);
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
 
+//* Find all Tweets in db
+app.get("/tweets", (req, res) => {
+  Tweet.find({})
+    // if database transaction succeeds
+    .then((tweets) => {
+      res.send(tweets);
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+// * ==== Adds test to the database
+app.get("/seed", (req, res) => {
+  // * Create many Tweets
+  Tweet.insertMany(manyTweets)
+    // if database transaction succeeds
+    .then((tweets) => {
+      console.log(tweets);
+      res.redirect("/tweets");
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//* ==== Create a single tweet
+app.post("/tweets", (req, res) => {
+  // data comes from client or react app
+  const myFirstTweet = {
+    title: "Sage Advice 123",
+    body: "",
+    author: "Arthur",
+    category: "Programming",
+    likes: 20,
+  };
+  Tweet.create(myFirstTweet)
+    .then((tweet) => {
+      console.log(tweet);
+      res.send(tweet);
+    })
+    .catch((error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      console.log("This runs if the promise is completed or rejected");
+    });
+});
+
+//* Finds tweet by the title and removes it
+app.delete("/tweets/:title", (req, res) => {
+  Tweet.findOneAndRemove({ title: req.params.title })
+    // if database transaction succeeds
+    .then((tweet) => {
+      console.log(tweet);
+      res.redirect("/tweets");
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//* Finds tweet by the ID and removes it
+app.delete("/tweets/:id", (req, res) => {
+  Tweet.findByIdAndRemove(req.params.id)
+    // if database transaction succeeds
+    .then((tweet) => {
+      console.log(tweet);
+      res.redirect("/tweets");
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//* ==== Search for tweet by title
+app.get("/tweets/:title", (req, res) => {
+  //* search or filter by the title
+  Tweet.find({ title: req.params.title })
+    // if database transaction succeeds
+    .then((tweet) => {
+      res.send(tweet);
+    })
+    // if database transaction fails
+    .catch((error) => {
+      console.log(error);
+    });
+});
+
+//* ================================
 app.listen(3000, () => {
   console.log("Server is up!");
   connectToDB();
