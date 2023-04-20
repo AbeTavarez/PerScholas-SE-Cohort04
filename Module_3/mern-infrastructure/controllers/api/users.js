@@ -1,26 +1,29 @@
 //* Request handler Logic
+const User = require('../../models/user');
+const jwt = require('jsonwebtoken');
 
-function create(req, res) {
-    // console.log('[From POST handler]', req.body)
-    const jwt = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwMDciLCJuYW1lIjoiQWJyYWhhbSBUIiwiaWF0IjoxNTE2MjM5MDIyfQ.3lrBY2bnGd59sAelZX6DmJkNPKMaa3Cp1Defzl1FXCE';
-
-    const payload = jwt.split('.')[1]
-
-    console.log(atob(payload))
-
-    
-    res.json({
-        user: {
-            name: req.body.name,
-            email: req.body.email
-        }
-    })
+//* /*-- Helper Functions --*/
+function createJWT(user) {
+    return jwt.sign({user}, process.env.SECRET, {expiresIn: '24h'});
 }
 
+async function create(req, res) {
+    // console.log('[From POST handler]', req.body)
+    try {
+        //* creating a new user
+        const user = await User.create(req.body);
+        console.log(user);
 
+        //* creating a new jwt
+        const token = createJWT(user);
 
-
-
+        res.json(token);
+        
+    } catch (error) {
+        console.log(error);
+        res.status(400).json(error)
+    }
+}
 
 
 
